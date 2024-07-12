@@ -14,7 +14,7 @@ enum ENUM_NAV_TYPE {
   JS_TOOLS = "js-tools",
 }
 
-const rootNavMap = {
+const rootNavMap: Record<string, { label: string; }> = {
   "js-framework": { label: "客户端框架" },
   "js-tools": { label: "js工具" },
 };
@@ -217,7 +217,8 @@ const navItems: INavItems[] = [
       {
         key: "yarn",
         label: "yarn",
-        description: "Yarn 是第一个专门围绕工作区构建的包管理器，它可以让您将项目拆分为子组件。",
+        description:
+          "Yarn 是第一个专门围绕工作区构建的包管理器，它可以让您将项目拆分为子组件。",
         icon: "/img/yarn-favicon.svg",
         link: "https://yarnpkg.com/",
       },
