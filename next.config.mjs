@@ -1,6 +1,28 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  ) => {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      loader: "@svgr/webpack",
+      issuer: { not: /\.(css|scss|sass)$/ },
+    });
+    return config;
+  },
+  transpilePackages: [
+    "antd",
+    "@ant-design",
+    "rc-util",
+    "rc-pagination",
+    "rc-picker",
+    "rc-notification",
+    "rc-tooltip",
+    "rc-tree",
+    "rc-table",
+  ],
 };
 
 export default nextConfig;
