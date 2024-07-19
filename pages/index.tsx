@@ -1,12 +1,8 @@
-import { Metadata } from "next";
+import Head from "next/head";
 import NavItemCard, { INavItems } from "@/components/NavItemCard";
 import NavMenu from "@/components/NavMenu";
 import { AppstoreOutlined } from "@ant-design/icons";
 import { MutableRefObject, useRef } from "react";
-
-export const metadata: Metadata = {
-  title: "Home Page",
-};
 
 // 枚举 - 菜单栏一级类别
 enum ENUM_NAV_TYPE {
@@ -14,7 +10,7 @@ enum ENUM_NAV_TYPE {
   JS_TOOLS = "js-tools",
 }
 
-const rootNavMap: Record<string, { label: string; }> = {
+const rootNavMap: Record<string, { label: string }> = {
   "js-framework": { label: "客户端框架" },
   "js-tools": { label: "js工具" },
 };
@@ -406,6 +402,19 @@ export default function Home() {
 
   return (
     <div className="flex">
+      <Head>
+        <title>前端开发工具与资源导航站</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="og:title" content="前端开发工具与资源导航站" />
+        <meta
+          name="description"
+          content="探索最全面的前端开发工具与资源导航站！我们精心搜集并分类整理了最新的前端框架、库、插件、设计工具、代码片段以及教程指南，助力每一位前端开发者高效学习、快速开发。无论您是初学者还是资深专家，都能在这里找到提升技能的宝藏。立即访问，开启您的高效前端开发之旅！"
+        />
+        <meta
+          property="og:description"
+          content="探索最全面的前端开发工具与资源导航站！我们精心搜集并分类整理了最新的前端框架、库、插件、设计工具、代码片段以及教程指南，助力每一位前端开发者高效学习、快速开发。无论您是初学者还是资深专家，都能在这里找到提升技能的宝藏。立即访问，开启您的高效前端开发之旅！"
+        />
+      </Head>
       <NavMenu {...menuProps}></NavMenu>
       <div className="px-1 flex-1">
         {navItems.map((menu) => (
