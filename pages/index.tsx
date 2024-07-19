@@ -347,7 +347,7 @@ const useMenuProps = (
   list: INavItems[],
   target: MutableRefObject<Record<string, HTMLDivElement | null>>
 ) => {
-  const menuObj = navItems.reduce<Record<string, any>>((prev, cur) => {
+  const menuObj = list.reduce<Record<string, any>>((prev, cur) => {
     if (!cur.level) {
       return prev;
     }

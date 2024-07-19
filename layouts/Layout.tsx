@@ -45,7 +45,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
   return (
     <ThemeContext.Provider value={theme}>
       <div className={getThemeClassName()}>
-        <main className="bg-white dark:bg-slate-900 min-h-[calc(100vh-0.25rem)]">
+        <main className="bg-white dark:bg-slate-900">
           <nav className="sticky z-50 top-1 bg-white dark:bg-slate-900">
             <div className="container mx-auto py-2 px-2 bg-blue-50 text-sm rounded-2xl dark:bg-slate-800 space-x-3 mb-1">
               {navItems.map((item) => (

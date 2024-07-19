@@ -1,8 +1,7 @@
 import { ThemeContext } from "@/layouts/Layout";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Menu, type MenuProps } from "antd";
-import classNames from "classnames";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -37,12 +36,12 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
 
   return (
     <>
-      <div className="flex flex-col fixed top-14 h-[calc(100vh-4rem)] z-[10]">
+      <div className="inline-flex flex-col sticky top-14 -bottom-14 h-[calc(100vh-4rem)] z-[10]">
         <Menu
           mode="inline"
           selectedKeys={selectedKeys}
           theme={getTheme()}
-          className="h-[calc(100%-2rem)] overflow-y-auto !border-e-0"
+          className="overflow-y-auto !border-e-0 bg-transparent"
           inlineCollapsed={collapsed}
           items={props.items}
           onSelect={onSelect}
@@ -56,12 +55,6 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </Button>
       </div>
-      <div
-        className={classNames(
-          " h-full border-r border-r-slate-100",
-          collapsed ? "w-20" : "w-40"
-        )}
-      ></div>
     </>
   );
 };
