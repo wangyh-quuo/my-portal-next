@@ -28,7 +28,7 @@ const nextConfig = {
 // gitpage静态页面路径重定向
 if (process.env.GITHUB_ACTIONS) {
   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, "");
-  nextConfig.basePath = repo;
+  nextConfig.basePath = `/${repo}`;
   nextConfig.redirects = async () => {
     return [
       {
