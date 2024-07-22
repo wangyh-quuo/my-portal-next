@@ -45,7 +45,11 @@ const useOptions = () => {
       value: "ISO8601",
     },
     {
-      label: "timestamp",
+      label: "Unix 时间戳 (毫秒)",
+      value: "timestamp_ms",
+    },
+    {
+      label: "Unix 时间戳",
       value: "timestamp",
     },
   ];
@@ -117,6 +121,7 @@ const DateTimeConverter: React.FC = () => {
 
   const onSelectChange = (value: string) => {
     setDatetimeType(value);
+    updateDataSource(getDatetime(value));
   };
 
   const updateDataSource = (datetime: DateTime) => {
@@ -131,10 +136,18 @@ const DateTimeConverter: React.FC = () => {
   };
 
   const onFormChange = () => {
-    const { datetime } = form.getFieldsValue();
-    // TODO: 校验 ...
+    updateDataSource(getDatetime(datetimeType));
+  };
 
-    updateDataSource(datetime);
+  const getDatetime = (datetimeType: DateTime) => {
+    const { datetime } = form.getFieldsValue();
+    if (datetimeType === "timestamp") {
+      return dayjs(Number(datetime) * 1000);
+    }
+    if (datetimeType === "timestamp_ms") {
+      return dayjs(Number(datetime));
+    }
+    return datetime;
   };
 
   useEffect(() => {
@@ -153,8 +166,28 @@ const DateTimeConverter: React.FC = () => {
 
   return (
     <>
+      <h1 className="text-3xl font-bold mb-2 text-center">时间日期转换</h1>
+      <p className="text-base mb-4 text-center">
+        将日期和时间转换为各种不同的格式
+      </p>
       <Form form={form} layout="inline" onChange={onFormChange}>
-        <Form.Item label="日期时间" name="datetime">
+        <Form.Item
+          label="日期时间"
+          name="datetime"
+          rules={[
+            {
+              type: "string",
+              validator: (_rule, v) =>
+                new Promise((resolve, reject) => {
+                  if (v !== "" && !dayjs(v).isValid()) {
+                    reject("invalid date");
+                  } else {
+                    resolve(v);
+                  }
+                }),
+            },
+          ]}
+        >
           <Input
             placeholder="输入一个时间格式"
             addonAfter={
