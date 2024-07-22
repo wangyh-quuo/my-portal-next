@@ -25,4 +25,18 @@ const nextConfig = {
   ],
 };
 
+if (process.env.GITHUB_ACTIONS) {
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, "");
+  console.log(repo);
+  nextConfig.redirects = async () => {
+    return [
+      {
+        source: "/[path]",
+        destination: `/${repo}/[path].html`,
+        permanent: false,
+      },
+    ];
+  };
+}
+
 export default nextConfig;
