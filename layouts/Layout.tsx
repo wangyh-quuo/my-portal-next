@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { YuqueFilled } from "@ant-design/icons";
 import ThemeSelect from "@/components/ThemeSelect";
+import Link from "next/link";
 
 export type ThemeState = "system" | "dark" | "light";
 
@@ -34,6 +35,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     return theme;
   };
 
+  
   const navItems = [
     {
       key: "index",
@@ -54,14 +56,14 @@ const Layout: React.FC<LayoutProps> = (props) => {
           <nav className="sticky z-50 top-1 bg-white dark:bg-slate-900">
             <div className="container mx-auto py-2 px-2 bg-blue-50 text-sm rounded-2xl dark:bg-slate-800 space-x-3 mb-1">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.key}
                   href={item.link}
                   className="group relative inline-flex justify-center items-center px-2 py-0.5 bg-white rounded-md m-w-9 h-9 cursor-pointer"
                 >
                   {item.label}
                   <span className="hidden group-hover:inline-block animate-bounce absolute -bottom-0 hover:inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
-                </a>
+                </Link>
               ))}
               <div className="float-right grid grid-cols-2 cursor-pointer">
                 <ThemeSelect value={theme} onChange={onThemeChange} />
