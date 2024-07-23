@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Empty } from "antd";
+
 interface InstrumentProps {
   componentName: string;
 }
@@ -11,7 +13,12 @@ const Instrument: React.FC<InstrumentProps> = (props) => {
       const Comp = require(`./utils/${componentName}/index.tsx`).default;
       return <Comp />;
     } catch (error) {
-      return null;
+      return (
+        <Empty
+          className="h-full flex flex-col justify-center"
+          description="404"
+        />
+      );
     } finally {
       console.log("render component", componentName);
     }

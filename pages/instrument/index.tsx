@@ -12,6 +12,10 @@ const Page: React.FC<any> = () => {
           key: "date-time-converter",
           label: "日期时间转化器",
         },
+        {
+          key: "number-converter",
+          label: "数字转化器",
+        },
       ],
     },
   ];
