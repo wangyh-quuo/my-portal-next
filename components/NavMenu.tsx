@@ -27,7 +27,7 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
       parent: string[],
       res: string[]
     ) => {
-      list.forEach((item) => {
+      list.forEach((item: any) => {
         if (item && item.key === val) {
           res.push(...parent);
           return;
