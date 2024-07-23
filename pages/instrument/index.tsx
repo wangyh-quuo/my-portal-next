@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavMenu from "@/components/NavMenu";
 import Instrument from "@/components/instrument";
 
@@ -16,14 +16,27 @@ const Page: React.FC<any> = () => {
     },
   ];
 
-  const [componentName, setComponent] = useState<string>('');
+  const [componentName, setComponent] = useState<string>("");
 
   const onSelect = (info: any) => {
     setComponent(info.key);
   };
+
+  const defaultComponentName = items[0].children[0].key;
+
+  useEffect(() => {
+    if (!componentName) {
+      setComponent(defaultComponentName);
+    }
+  }, []);
+
   return (
     <div className="flex">
-      <NavMenu items={items} onSelect={onSelect}></NavMenu>
+      <NavMenu
+        items={items}
+        onSelect={onSelect}
+        defaultSelectKeys={[defaultComponentName]}
+      ></NavMenu>
       <Instrument componentName={componentName} />
     </div>
   );
