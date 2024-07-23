@@ -1,7 +1,8 @@
 import { ThemeContext } from "@/layouts/Layout";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Menu, type MenuProps } from "antd";
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useState } from "react";
+import useWindowSize from "./hooks/useWindowSize";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -14,7 +15,9 @@ interface INavMenuProp {
 const NavMenu: React.FC<INavMenuProp> = (props) => {
   const [collapsed, setCollapsed] = useState(false);
 
-  const [selectedKeys, setSelectedKeys] = useState(props.defaultSelectKeys ?? []);
+  const [selectedKeys, setSelectedKeys] = useState(
+    props.defaultSelectKeys ?? []
+  );
   const findDefaultOpenKeys = () => {
     const result: string[] = [];
 
@@ -59,6 +62,14 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
     }
     return theme;
   };
+
+  useWindowSize(({ width }) => {
+    if (width < 750) {
+      setCollapsed(true);
+    } else {
+      setCollapsed(false);
+    }
+  });
 
   return (
     <>
