@@ -24,7 +24,7 @@ const Instrument: React.FC<InstrumentProps> = (props) => {
     }
   };
 
-  return <div className="flex-1 p-4 bg-slate-50">{renderComponent()}</div>;
+  return <div className="flex-1 p-4 bg-slate-50 overflow-hidden">{renderComponent()}</div>;
 };
 
 export default Instrument;

@@ -89,7 +89,7 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
           type="primary"
           onClick={toggleCollapsed}
           size="small"
-          className="absolute bottom-0 left-4"
+          className="absolute bottom-0 left-4 hidden sm:inline-block"
         >
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </Button>
