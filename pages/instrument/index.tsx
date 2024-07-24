@@ -16,6 +16,10 @@ const Page: React.FC<any> = () => {
           key: "number-converter",
           label: "数字转化器",
         },
+        {
+          key: "base64-code-converter",
+          label: "base64字符串编码转换",
+        },
       ],
     },
   ];
