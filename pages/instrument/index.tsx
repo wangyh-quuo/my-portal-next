@@ -22,6 +22,16 @@ const Page: React.FC<any> = () => {
         },
       ],
     },
+    {
+      key: "media",
+      label: "图片/视频",
+      children: [
+        {
+          key: "qr-code",
+          label: "二维码生成器"
+        }
+      ]
+    }
   ];
 
   const [componentName, setComponent] = useState<string>("");
