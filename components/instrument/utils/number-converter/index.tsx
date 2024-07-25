@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, InputNumber, Select, Switch } from "antd";
+import { Card, Form, Input, InputNumber, Select, Switch } from "antd";
 import UtilsLayout from "../Layout";
 import numeric from "./numeric";
 
@@ -46,7 +46,7 @@ const NumberConverter = () => {
       title="数字转换器"
       description="用于将数字转换为具有特定格式的字符串。这种格式化可以包括数字的前缀、后缀、小数点位数、千位分隔符、百分比表示等多种形式。"
     >
-      <div className="md:mx-20 p-5  rounded-sm shadow-lg">
+      <Card className="md:mx-20 p-5">
         <Form
           layout="horizontal"
           form={form}
@@ -103,7 +103,7 @@ const NumberConverter = () => {
           <p className="my-4">formatter: {format}</p>
           <p className="my-4">结果: {result}</p>
         </div>
-      </div>
+      </Card>
     </UtilsLayout>
   );
 };

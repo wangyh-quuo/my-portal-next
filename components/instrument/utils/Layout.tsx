@@ -14,8 +14,8 @@ const UtilsLayout: React.FC<UtilsLayoutProps> = (props) => {
   const { title, description } = props;
   return (
     <>
-      <h1 className="text-3xl font-bold mb-2 text-center">{title}</h1>
-      <p className="text-base mb-4 text-center">{description}</p>
+      <h1 className="text-3xl font-bold mb-2 text-center text-black dark:text-white">{title}</h1>
+      <p className="text-base mb-4 text-center text-black dark:text-white">{description}</p>
       {props.children}
     </>
   );

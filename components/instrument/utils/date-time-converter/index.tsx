@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Select, Table, TableColumnType, message } from "antd";
+import {
+  Card,
+  Form,
+  Input,
+  Select,
+  Table,
+  TableColumnType,
+  message,
+} from "antd";
 import dayjs from "dayjs";
 import Clipboard from "clipboard";
+import UtilsLayout from "../Layout";
 
 type DateTime = string | number | dayjs.Dayjs | Date | null | undefined;
 
@@ -165,53 +174,54 @@ const DateTimeConverter: React.FC = () => {
   }, [dataSource]);
 
   return (
-    <>
-      <h1 className="text-3xl font-bold mb-2 text-center">时间日期转换</h1>
-      <p className="text-base mb-4 text-center">
-        将日期和时间转换为各种不同的格式
-      </p>
-      <Form form={form} layout="horizontal" onValuesChange={onValuesChange}>
-        <Form.Item
-          wrapperCol={{ span: 8 }}
-          label="日期时间"
-          name="datetime"
-          rules={[
-            {
-              type: "string",
-              validator: (_rule, v) =>
-                new Promise((resolve, reject) => {
-                  if (v !== "" && !dayjs(v).isValid()) {
-                    reject("invalid date");
-                  } else {
-                    resolve(v);
-                  }
-                }),
-            },
-          ]}
-        >
-          <Input
-            placeholder="输入一个时间格式"
-            addonAfter={
-              <Select
-                options={selectOptions}
-                value={datetimeType}
-                onChange={onSelectChange}
-              ></Select>
-            }
-          />
-        </Form.Item>
-      </Form>
-      {/* 结果 */}
-      <Table
-        showHeader={false}
-        tableLayout="fixed"
-        className="mt-4"
-        columns={columns}
-        dataSource={dataSource}
-        rowKey="datetimeType"
-        pagination={false}
-      ></Table>
-    </>
+    <UtilsLayout
+      title="时间日期转换"
+      description="将日期和时间转换为各种不同的格式"
+    >
+      <Card>
+        <Form form={form} layout="horizontal" onValuesChange={onValuesChange}>
+          <Form.Item
+            wrapperCol={{ span: 8 }}
+            label="日期时间"
+            name="datetime"
+            rules={[
+              {
+                type: "string",
+                validator: (_rule, v) =>
+                  new Promise((resolve, reject) => {
+                    if (v !== "" && !dayjs(v).isValid()) {
+                      reject("invalid date");
+                    } else {
+                      resolve(v);
+                    }
+                  }),
+              },
+            ]}
+          >
+            <Input
+              placeholder="输入一个时间格式"
+              addonAfter={
+                <Select
+                  options={selectOptions}
+                  value={datetimeType}
+                  onChange={onSelectChange}
+                ></Select>
+              }
+            />
+          </Form.Item>
+        </Form>
+        {/* 结果 */}
+        <Table
+          showHeader={false}
+          tableLayout="fixed"
+          className="mt-4"
+          columns={columns}
+          dataSource={dataSource}
+          rowKey="datetimeType"
+          pagination={false}
+        ></Table>
+      </Card>
+    </UtilsLayout>
   );
 };
 

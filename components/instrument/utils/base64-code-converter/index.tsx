@@ -100,7 +100,7 @@ const Base64CodeConverter = () => {
           />
           {error && <div className="text-red-600">无效的base64字符串</div>}
         </Card>
-        <div className="text-center" onClick={onExchange}>
+        <div className="text-center text-black dark:text-white" onClick={onExchange}>
           <SwapOutlined className="mt-4 text-xl cursor-pointer hover:text-gray-500" />
         </div>
         <Card

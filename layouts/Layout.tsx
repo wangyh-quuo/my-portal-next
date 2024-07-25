@@ -59,7 +59,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
                 <Link
                   key={item.key}
                   href={item.link}
-                  className="group relative inline-flex justify-center items-center px-2 py-0.5 bg-white rounded-md m-w-9 h-9 cursor-pointer"
+                  className="group relative inline-flex justify-center items-center px-2 py-0.5 bg-white rounded-md m-w-9 h-9 cursor-pointer text-black"
                 >
                   {item.label}
                   <span className="hidden group-hover:inline-block animate-bounce absolute -bottom-0 hover:inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
