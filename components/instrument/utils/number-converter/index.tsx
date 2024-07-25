@@ -22,7 +22,7 @@ const NumberConverter = () => {
   const [format, setFormat] = useState<string>("");
   const [result, setResult] = useState<string>("");
 
-  const onFormChange = () => {
+  const onValuesChange = () => {
     const { sign, value, seg, round, decimal, unit } = form.getFieldsValue();
     const formatter =
       (sign ? "+" : "") +
@@ -38,7 +38,7 @@ const NumberConverter = () => {
   };
 
   useEffect(() => {
-    onFormChange();
+    onValuesChange();
   }, []);
 
   return (
@@ -50,7 +50,7 @@ const NumberConverter = () => {
         <Form
           layout="horizontal"
           form={form}
-          onFieldsChange={onFormChange}
+          onValuesChange={onValuesChange}
           initialValues={{
             sign: true,
             value: 99999.123456,

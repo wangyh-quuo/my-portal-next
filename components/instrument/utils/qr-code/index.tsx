@@ -121,7 +121,7 @@ const ScanCode = () => {
             margin: 2,
             icon: "https://avatars.githubusercontent.com/u/52026731?v=4",
           }}
-          onFieldsChange={createImage}
+          onValuesChange={createImage}
         >
           <Form.Item name="text" label="文本内容">
             <Input placeholder="输入文本" />

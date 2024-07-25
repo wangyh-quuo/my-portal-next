@@ -135,7 +135,7 @@ const DateTimeConverter: React.FC = () => {
     setDataSource(res);
   };
 
-  const onFormChange = () => {
+  const onValuesChange = () => {
     updateDataSource(getDatetime(datetimeType));
   };
 
@@ -170,7 +170,7 @@ const DateTimeConverter: React.FC = () => {
       <p className="text-base mb-4 text-center">
         将日期和时间转换为各种不同的格式
       </p>
-      <Form form={form} layout="horizontal" onChange={onFormChange}>
+      <Form form={form} layout="horizontal" onValuesChange={onValuesChange}>
         <Form.Item
           wrapperCol={{ span: 8 }}
           label="日期时间"
