@@ -46,7 +46,7 @@ const NumberConverter = () => {
       title="数字转换器"
       description="用于将数字转换为具有特定格式的字符串。这种格式化可以包括数字的前缀、后缀、小数点位数、千位分隔符、百分比表示等多种形式。"
     >
-      <Card className="md:mx-20 p-5">
+      <Card>
         <Form
           layout="horizontal"
           form={form}
@@ -61,11 +61,7 @@ const NumberConverter = () => {
           }}
           labelWrap
         >
-          <Form.Item
-            name="value"
-            label="数字"
-            className="w-full !mb-5"
-          >
+          <Form.Item name="value" label="数字" className="w-full !mb-5">
             <Input />
           </Form.Item>
           <Form.Item name="sign" valuePropName="checked" label="正负符号">

@@ -107,7 +107,7 @@ const ScanCode = () => {
       title="二维码生成器"
       description="生成并下载url或文本的QR二维码"
     >
-      <Card className="md:mx-20">
+      <Card>
         <Form
           form={form}
           layout="horizontal"
