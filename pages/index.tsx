@@ -416,7 +416,7 @@ export default function Home() {
         />
       </Head>
       <NavMenu {...menuProps}></NavMenu>
-      <div className="px-1 flex-1">
+      <div className="p-4 pt-0 flex-1 bg-slate-50 dark:bg-slate-950">
         {navItems.map((menu) => (
           <div
             key={menu.key}

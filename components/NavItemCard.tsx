@@ -24,7 +24,7 @@ const NavItemCard: React.FC<NavItemCardProps> = ({ navItem }) => {
   return (
     <a
       href={navItem.link}
-      className="flex items-center w-full rounded-xl p-4 hover:bg-slate-50 dark:text-slate-100 dark:hover:bg-slate-600"
+      className="flex items-center w-full rounded-xl p-4 bg-white shadow-sm hover:bg-blue-50 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-600"
       target="_blank"
     >
       <div className="p-4 border rounded-full bg-white">

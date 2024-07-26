@@ -1,7 +1,6 @@
-import { ThemeContext } from "@/layouts/Layout";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Menu, type MenuProps } from "antd";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import useWindowSize from "./hooks/useWindowSize";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -53,16 +52,6 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
     setCollapsed(!collapsed);
   };
 
-  const theme = useContext(ThemeContext);
-
-  const getTheme = () => {
-    if (theme === "system") {
-      const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
-      return isDarkTheme.matches ? "dark" : "light";
-    }
-    return theme;
-  };
-
   useWindowSize(({ width }) => {
     if (width < 750) {
       setCollapsed(true);
@@ -79,7 +68,6 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
           defaultSelectedKeys={props.defaultSelectKeys}
           defaultOpenKeys={defaultOpenKeys}
           selectedKeys={selectedKeys}
-          theme={getTheme()}
           className="overflow-y-auto !border-e-0 bg-transparent"
           inlineCollapsed={collapsed}
           items={props.items}
