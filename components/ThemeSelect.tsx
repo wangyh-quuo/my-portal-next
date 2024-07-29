@@ -5,7 +5,7 @@ import MoonSvg from "../images/svg/moon.svg";
 import Icon from "@ant-design/icons";
 
 import classNames from "classnames";
-import type { ThemeState } from "@/layouts/Layout";
+import type { ThemeState } from "@/components/context/ThemeContext";
 
 const ThemeSelect: React.FC<{
   value: string;

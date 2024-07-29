@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { YuqueFilled } from "@ant-design/icons";
 import ThemeSelect from "@/components/ThemeSelect";
 import Link from "next/link";
-import { ConfigProvider, theme as antTheme } from "antd";
+import { ConfigProvider } from "antd";
 import { darkThemeConfig } from "@/themes/antd-theme-config";
-
-export type ThemeState = "system" | "dark" | "light";
-
-export const ThemeContext = React.createContext<ThemeState>("light");
+import ThemeContext, {
+  type ThemeState,
+  getThemeClassName,
+} from "@/components/context/ThemeContext";
+import { isClientSide } from "@/utils/env";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
-
-const isClientSide = () => typeof window !== "undefined";
-const isServerSide = () => typeof window === "undefined";
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const defaultTheme = isClientSide()
@@ -27,14 +25,6 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const onThemeChange = (value: ThemeState) => {
     localStorage.setItem("theme", value);
     setTheme(value);
-  };
-
-  const getThemeClassName = () => {
-    if (theme === "system") {
-      const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
-      return isDarkTheme.matches ? "dark" : "light";
-    }
-    return theme;
   };
 
   const navItems = [
@@ -53,9 +43,9 @@ const Layout: React.FC<LayoutProps> = (props) => {
   return (
     <ThemeContext.Provider value={theme}>
       <ConfigProvider
-        theme={getThemeClassName() == "dark" ? darkThemeConfig : {}}
+        theme={getThemeClassName(theme) == "dark" ? darkThemeConfig : {}}
       >
-        <div className={getThemeClassName()}>
+        <div className={getThemeClassName(theme)}>
           <main className="bg-white dark:bg-slate-900 min-h-screen">
             <nav className="sticky z-50 top-1 bg-white dark:bg-slate-900">
               <div className="container mx-auto py-2 px-2 bg-blue-50 text-sm rounded-2xl dark:bg-slate-800 space-x-3 mb-1">
