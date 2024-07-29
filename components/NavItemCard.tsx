@@ -1,9 +1,12 @@
+import React from "react";
+
 export interface INavItems {
   key: string;
   label: string;
   items: INavItem[];
   parentKey?: string;
   level: number;
+  icon?: React.ReactNode;
 }
 export interface INavItem {
   key: string;
