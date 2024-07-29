@@ -35,7 +35,12 @@ const NavItemCard: React.FC<NavItemCardProps> = ({ navItem }) => {
       </div>
       <div className="ml-2 flex-1">
         <div>{navItem.label}</div>
-        <div className="text-sm text-gray-400">{navItem.description}</div>
+        <div
+          className="text-sm text-gray-400 overflow-ellipsis line-clamp-3"
+          title={navItem.description}
+        >
+          {navItem.description}
+        </div>
       </div>
     </a>
   );
