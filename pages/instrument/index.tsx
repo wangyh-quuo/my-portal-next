@@ -32,10 +32,20 @@ const Page: React.FC<any> = () => {
       children: [
         {
           key: "qr-code",
-          label: "二维码生成器"
-        }
-      ]
-    }
+          label: "二维码生成器",
+        },
+      ],
+    },
+    {
+      key: "text",
+      label: "文本",
+      children: [
+        {
+          key: "text-diff",
+          label: "文本对比",
+        },
+      ],
+    },
   ];
 
   const [componentName, setComponent] = useState<string>("");
