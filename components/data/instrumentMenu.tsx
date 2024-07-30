@@ -5,6 +5,7 @@ import {
   FieldTimeOutlined,
   FileImageOutlined,
   QrcodeOutlined,
+  RetweetOutlined,
 } from "@ant-design/icons";
 
 /**
@@ -35,6 +36,11 @@ const instrumentMenus = [
         label: "base64文件转换",
         icon: <FileImageOutlined />,
       },
+      {
+        key: "json-to-toml",
+        label: "JSON转换TOML",
+        icon: <RetweetOutlined />,
+      }
     ],
   },
   {

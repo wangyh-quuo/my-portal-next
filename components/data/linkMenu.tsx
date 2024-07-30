@@ -70,6 +70,13 @@ const linkItems: INavItems[] = [
         icon: "/assets/icons/favicon-32x32.png",
         link: "https://jsbench.me",
       },
+      {
+        key: "transform",
+        label: "多语言web转换器",
+        description: "多语言网络转换器将为您节省大量时间。",
+        icon: "/static/favicon.png",
+        link: "https://transform.tools",
+      },
     ],
     level: 1,
   },

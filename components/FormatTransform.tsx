@@ -76,7 +76,7 @@ const FormatTransform: React.FC<FormatTransformProps> = (props) => {
         <SwapOutlined
           onClick={onExchange}
           title="交换"
-          className="p-1 mt-4 text-xl cursor-pointer hover:text-gray-500"
+          className="p-1 sm:mt-4 text-xl cursor-pointer hover:text-gray-500"
         />
       </div>
       <Card
