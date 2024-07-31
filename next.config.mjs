@@ -11,12 +11,14 @@ const nextConfig = {
       loader: "@svgr/webpack",
       issuer: { not: /\.(css|scss|sass)$/ },
     });
-    config.plugins.push(
-      new MonacoWebpackPlugin({
-        languages: ["typescript", "javascript", "css", "json"],
-        filename: 'static/[name].worker.js',
-      })
-    );
+    if (!isServer) {
+      config.plugins.push(
+        new MonacoWebpackPlugin({
+          languages: ["typescript", "javascript", "css", "json"],
+          filename: "static/[name].worker.js",
+        })
+      );
+    }
     return config;
   },
   transpilePackages: [
