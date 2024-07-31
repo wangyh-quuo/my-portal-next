@@ -1,4 +1,5 @@
 import {
+  BgColorsOutlined,
   DiffOutlined,
   FieldNumberOutlined,
   FieldStringOutlined,
@@ -45,7 +46,12 @@ const instrumentMenus = [
         key: "json-to-yaml",
         label: "JSON转换YAML",
         icon: <RetweetOutlined />,
-      }
+      },
+      {
+        key: "color-converter",
+        label: "颜色转换器",
+        icon: <BgColorsOutlined />,
+      },
     ],
   },
   {
