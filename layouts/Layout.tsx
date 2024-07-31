@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { YuqueFilled } from "@ant-design/icons";
+import { GithubFilled, YuqueFilled } from "@ant-design/icons";
 import ThemeSelect from "@/components/ThemeSelect";
 import Link from "next/link";
 import { ConfigProvider } from "antd";
@@ -59,7 +59,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
                     <span className="hidden group-hover:inline-block animate-bounce absolute -bottom-0 hover:inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
                   </Link>
                 ))}
-                <div className="float-right grid grid-cols-2 cursor-pointer">
+                <div className="float-right grid grid-cols-3 cursor-pointer">
                   <ThemeSelect value={theme} onChange={onThemeChange} />
                   <a
                     href="https://www.yuque.com/wangyh-ocrqv"
@@ -68,6 +68,14 @@ const Layout: React.FC<LayoutProps> = (props) => {
                     title="语雀主页"
                   >
                     <YuqueFilled className="text-green-300 bg-green-100/50 p-2 rounded-full" />
+                  </a>
+                  <a
+                    href="https://github.com/wangyh-quuo/my-portal-next"
+                    target="_blank"
+                    className="flex justify-center items-center"
+                    title="github"
+                  >
+                    <GithubFilled className="bg-slate-200 p-2 rounded-full" />
                   </a>
                 </div>
               </div>
