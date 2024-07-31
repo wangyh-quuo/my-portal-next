@@ -8,13 +8,13 @@ const JSONToTOML = () => {
       <FormatTransform
         inputTitle="JSON"
         inputLanguage="json"
-        inputPlaceholder="开始在这里复制或书写一个JSON字符串..."
-        inputOutputPlaceholder="等待输出结果"
+        inputPlaceholder="在这里复制或编辑你的JSON..."
+        inputOutputPlaceholder="等待输出结果..."
         inputToOutput={jsonToToml}
         outputTitle="TOML"
         outputLanguage="toml"
-        outputPlaceholder="等待输出结果"
-        outputInputPlaceholder="开始在这里复制或书写一个TOML字符串..."
+        outputPlaceholder="等待输出结果..."
+        outputInputPlaceholder="在这里复制或编辑你的TOML..."
         outputToInput={tomlToJson}
       />
     </UtilsLayout>

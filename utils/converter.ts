@@ -20,7 +20,7 @@ export const tomlToJson = (v: string) => {
   }
   try {
     const toml = TOML.parse(v);
-    const json = JSON.stringify(toml);
+    const json = JSON.stringify(toml, null, 2);
     return json;
   } catch (error) {
     return "";
