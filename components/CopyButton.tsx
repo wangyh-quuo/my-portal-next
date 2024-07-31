@@ -3,15 +3,16 @@ import React, { useRef } from "react";
 import Clipboard from "clipboard";
 
 interface CopyButtonProps {
-  value: string;
+  value?: string;
   buttonProps?: ButtonProps;
+  options?: ClipboardJS.Options;
 }
 
 const CopyButton: React.FC<CopyButtonProps> = (props) => {
   const copyBtn = useRef<HTMLButtonElement>(null);
 
   const copyResult = () => {
-    const clipboard = new Clipboard(copyBtn.current!);
+    const clipboard = new Clipboard(copyBtn.current!, props.options);
     clipboard.on("success", () => {
       message.success("复制成功");
       clipboard.destroy();
