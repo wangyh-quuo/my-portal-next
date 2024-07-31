@@ -5,11 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
+    "@next/bundle-analyzer": "^14.2.5",
     "antd": "^5.19.1",
     "classnames": "^2.5.1",
     "clipboard": "^2.0.11",

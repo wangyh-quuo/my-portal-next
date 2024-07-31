@@ -1,4 +1,8 @@
 import MonacoWebpackPlugin from "monaco-editor-webpack-plugin";
+import BundleAnalyzer from "@next/bundle-analyzer";
+const withBundleAnalyzer = BundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -49,4 +53,4 @@ if (process.env.GITHUB_ACTIONS) {
   };
 }
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);
