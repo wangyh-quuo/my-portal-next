@@ -5,6 +5,12 @@ const withBundleAnalyzer = BundleAnalyzer({
 });
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Static export
+  // https://nextjs.org/docs/app/building-your-application/deploying/static-exports#version-history
+  output: "export",
+  // Disable server side image optimization too
+  // https://nextjs.org/docs/api-reference/next/image#unoptimized
+  "images.unoptimized": true,
   reactStrictMode: true,
   webpack: (
     config,
