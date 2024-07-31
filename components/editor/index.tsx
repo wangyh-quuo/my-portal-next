@@ -73,6 +73,9 @@ const Editor: React.FC<EditorProps> = (props) => {
     if (editor) {
       editor.setModel(textModel);
     }
+    return () => {
+      textModel.dispose();
+    }
   }, [editor, value, language]);
 
   useLayoutEffect(() => {

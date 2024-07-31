@@ -40,6 +40,11 @@ const instrumentMenus = [
         key: "json-to-toml",
         label: "JSON转换TOML",
         icon: <RetweetOutlined />,
+      },
+      {
+        key: "json-to-yaml",
+        label: "JSON转换YAML",
+        icon: <RetweetOutlined />,
       }
     ],
   },
