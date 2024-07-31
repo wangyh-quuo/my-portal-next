@@ -19,19 +19,20 @@ const usePlaceholder = (
   }
   
   useEffect(() => {
-    showPlaceholder(editor?.getValue() ?? "");
-    const blurEditorWidget = editor?.onDidBlurEditorWidget(() => {
-      showPlaceholder(editor.getValue());
-    });
-
-    const focusEditorWidget = editor?.onDidFocusEditorWidget(() => {
+    if (editor?.getValue()) {
       hidePlaceholder();
+    } else {
+      showPlaceholder(editor?.getValue() ?? "");
+    }
+    const didChangeModel = editor?.onDidChangeModel(() => {
+      if (editor?.getValue()) {
+        hidePlaceholder();
+      }
     });
     return () => {
-      blurEditorWidget?.dispose();
-      focusEditorWidget?.dispose();
+      didChangeModel?.dispose();
     };
-  }, [editor]);
+  }, [editor, editor?.getValue()]);
   return placeholderRef;
 };
 
