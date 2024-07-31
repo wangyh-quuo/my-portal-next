@@ -62,7 +62,7 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
 
   return (
     <>
-      <div className="inline-flex flex-col sticky top-14 -bottom-14 h-[calc(100vh-4rem)] z-[10]">
+      <div className="hidden sm:inline-flex flex-col sticky top-14 -bottom-14 h-[calc(100vh-4rem)] z-[10]">
         <Menu
           mode="inline"
           defaultSelectedKeys={props.defaultSelectKeys}
@@ -82,6 +82,16 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </Button>
       </div>
+      {/* mobile menu*/}
+      <Menu
+        mode="horizontal"
+        defaultSelectedKeys={props.defaultSelectKeys}
+        defaultOpenKeys={defaultOpenKeys}
+        selectedKeys={selectedKeys}
+        className="sm:hidden"
+        items={props.items}
+        onSelect={onSelect}
+      />
     </>
   );
 };

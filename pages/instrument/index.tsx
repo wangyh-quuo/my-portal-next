@@ -20,7 +20,7 @@ const Page: React.FC<any> = () => {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex sm:flex-row flex-col">
       <Head>
         <title>前端开发工具与资源导航站</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

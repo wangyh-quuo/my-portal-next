@@ -21,7 +21,11 @@ const useWindowSize = (
     return () => {
       window.removeEventListener("resize", update);
     };
-  });
+  }, [update]);
+
+  useEffect(() => {
+    update();
+  }, []);
   return ref;
 };
 
