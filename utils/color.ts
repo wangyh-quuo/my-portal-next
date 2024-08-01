@@ -93,8 +93,8 @@ export const parseHexColor = (color: string) => {
     hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
   }
   if (hex.length === 4) {
+    a = parseInt(`${hex[3]}${hex[3]}`, 16) / 255;
     hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
-    a = parseInt(hex.slice(3), 16) / 255;
   }
   if (hex.length === 8) {
     a = parseInt(hex.slice(6), 16) / 255;
