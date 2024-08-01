@@ -2,12 +2,14 @@
   "name": "my-protal-next",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "build:analyze": "ANALYZE=true next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "mocha"
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
@@ -16,6 +18,7 @@
     "classnames": "^2.5.1",
     "clipboard": "^2.0.11",
     "dayjs": "^1.11.12",
+    "lodash": "^4.17.21",
     "monaco-editor": "^0.50.0",
     "next": "14.2.4",
     "qrcode": "^1.5.3",
@@ -26,16 +29,20 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@types/lodash": "^4.17.7",
+    "@types/mocha": "^10.0.7",
     "@types/node": "^20",
     "@types/qrcode": "^1.5.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
+    "mocha": "^10.7.0",
     "monaco-editor-webpack-plugin": "^7.1.0",
     "postcss": "^8",
     "sass": "^1.77.8",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
