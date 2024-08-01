@@ -76,5 +76,16 @@ const instrumentMenus = [
       },
     ],
   },
+  {
+    key: "encryption",
+    label: "加密",
+    children: [
+      {
+        key: "uuid-generator",
+        label: "UUID生成器",
+        icon: <FieldNumberOutlined />,
+      },
+    ]
+  }
 ];
 export default instrumentMenus;
