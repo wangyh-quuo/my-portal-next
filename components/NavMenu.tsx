@@ -86,7 +86,6 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
       <Menu
         mode="horizontal"
         defaultSelectedKeys={props.defaultSelectKeys}
-        defaultOpenKeys={defaultOpenKeys}
         selectedKeys={selectedKeys}
         className="sm:hidden"
         items={props.items}

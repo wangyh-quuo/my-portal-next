@@ -14,7 +14,7 @@ const Instrument: React.FC<InstrumentProps> = (props) => {
       return {
         default: () => (
           <Empty
-            className="h-full flex flex-col justify-center"
+            className="sm:h-full h-[calc(100vh-180px)] flex flex-col justify-center"
             description="404"
           />
         ),
@@ -26,7 +26,7 @@ const Instrument: React.FC<InstrumentProps> = (props) => {
     <div className="flex-1 p-4 bg-slate-50 dark:bg-slate-950 overflow-hidden">
       <Suspense
         fallback={
-          <div className="flex flex-col w-full h-full justify-center items-center">
+          <div className="flex flex-col w-full h-[calc(100vh-180px)] justify-center items-center">
             <Spin />
             <div className="text-sm pt-1 text-blue-400">加载中</div>
           </div>
