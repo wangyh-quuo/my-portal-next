@@ -85,6 +85,11 @@ const instrumentMenus = [
         label: "UUID生成器",
         icon: <FieldNumberOutlined />,
       },
+      {
+        key: "nanoid-generator",
+        label: "nanoid生成器",
+        icon: <FieldNumberOutlined />,
+      },
     ]
   }
 ];
