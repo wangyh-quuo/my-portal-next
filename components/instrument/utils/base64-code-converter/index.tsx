@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
 import UtilsLayout from "../Layout";
-import { Button, Card, Input, message } from "antd";
+import { Card, Input } from "antd";
 import { SwapOutlined } from "@ant-design/icons";
 import { TextAreaRef } from "antd/es/input/TextArea";
-import Clipboard from "clipboard";
+import { base64ToString, stringToBase64 } from "@/utils/converter";
+import CopyButton from "@/components/CopyButton";
 
 const Base64CodeConverter = () => {
   const [config, setConfig] = useState([
@@ -29,21 +30,8 @@ const Base64CodeConverter = () => {
     try {
       const rightValue =
         left.title === "string"
-          ? btoa(
-              encodeURIComponent(leftValue).replace(
-                /%([0-9A-F]{2})/g,
-                function (match, p1) {
-                  return String.fromCharCode(Number("0x" + p1));
-                }
-              )
-            )
-          : decodeURIComponent(
-              Array.prototype.map
-                .call(atob(leftValue), function (c) {
-                  return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-                })
-                .join("")
-            );
+          ? stringToBase64(leftValue)
+          : base64ToString(leftValue);
 
       setConfig([
         { ...left, value: leftValue },
@@ -75,14 +63,6 @@ const Base64CodeConverter = () => {
     leftRef.current?.focus();
   };
 
-  const copyResult = () => {
-    const clipboard = new Clipboard("#result_btn");
-    clipboard.on("success", () => {
-      message.success("复制成功");
-      clipboard.destroy();
-    });
-  };
-
   return (
     <UtilsLayout
       title="Base64 字符串编码/解码"
@@ -100,24 +80,17 @@ const Base64CodeConverter = () => {
           />
           {error && <div className="text-red-600">无效的base64字符串</div>}
         </Card>
-        <div className="text-center text-black dark:text-white" onClick={onExchange}>
+        <div
+          className="text-center text-black dark:text-white"
+          onClick={onExchange}
+        >
           <SwapOutlined className="sm:mt-4 text-xl cursor-pointer hover:text-gray-500" />
         </div>
         <Card
           className="col-span-5"
           title={right.title}
           bordered={false}
-          extra={
-            <Button
-              id="result_btn"
-              type="primary"
-              data-clipboard-text={right.value}
-              onClick={copyResult}
-              disabled={right.value === ""}
-            >
-              复制结果
-            </Button>
-          }
+          extra={<CopyButton value={right.value} />}
         >
           <Input.TextArea
             style={{ height: 240, resize: "none" }}
