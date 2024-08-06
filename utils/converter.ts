@@ -70,3 +70,17 @@ export const base64ToString = (v: string) => {
       .join("")
   );
 };
+
+export const bufferToHex = (buf: ArrayBuffer) => {
+  return Array.prototype.map
+    .call(new Uint8Array(buf), (item) => {
+      return item.toString(16).padStart(2, "0");
+    })
+    .join("");
+};
+
+export const hexToBuffer = (hex: string) => {
+  const matches = hex.match(/([0-9a-fA-F]{2})/g);
+  const buf = Array.from(matches ?? []).map((item) => Number("0x" + item));
+  return new Uint8Array(buf);
+};

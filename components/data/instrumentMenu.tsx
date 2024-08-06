@@ -7,6 +7,7 @@ import {
   FileImageOutlined,
   QrcodeOutlined,
   RetweetOutlined,
+  SecurityScanOutlined,
 } from "@ant-design/icons";
 
 /**
@@ -89,6 +90,11 @@ const instrumentMenus = [
         key: "nanoid-generator",
         label: "nanoid生成器",
         icon: <FieldNumberOutlined />,
+      },
+      {
+        key: "encrypt",
+        label: "加密/解密文本",
+        icon: <SecurityScanOutlined />,
       },
     ]
   }
