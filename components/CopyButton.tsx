@@ -6,6 +6,7 @@ interface CopyButtonProps {
   value?: string;
   buttonProps?: ButtonProps;
   options?: ClipboardJS.Options;
+  children?: React.ReactNode;
 }
 
 const CopyButton: React.FC<CopyButtonProps> = (props) => {
@@ -31,7 +32,7 @@ const CopyButton: React.FC<CopyButtonProps> = (props) => {
       disabled={!props.value}
       {...props.buttonProps}
     >
-      复制结果
+      {props.children ?? "复制结果"}
     </Button>
   );
 };
