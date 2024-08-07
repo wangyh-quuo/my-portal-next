@@ -2,6 +2,7 @@ import React from "react";
 import UtilsLayout from "../Layout";
 import { Tabs } from "antd";
 import AES from "./aes";
+import RSA from "./rsa";
 
 const Encrypt = () => {
   const tabsList = [
@@ -9,6 +10,11 @@ const Encrypt = () => {
       label: "AES",
       key: "AES",
       children: <AES />,
+    },
+    {
+      label: "RSA",
+      key: "RSA",
+      children: <RSA />,
     },
   ];
 
