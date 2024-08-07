@@ -62,13 +62,16 @@ export const stringToBase64 = (v: string) => {
 };
 
 export const base64ToString = (v: string) => {
-  return decodeURIComponent(
-    Array.prototype.map
-      .call(atob(v), function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join("")
-  );
+  const str = Array.prototype.map
+    .call(atob(v), function (c) {
+      return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+    })
+    .join("");
+  try {
+    return decodeURIComponent(str);
+  } catch (error) {
+    return unescape(str);
+  }
 };
 
 export const bufferToHex = (buf: ArrayBuffer) => {
