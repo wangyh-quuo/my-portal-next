@@ -120,6 +120,11 @@ const instrumentMenus = [
         label: "http状态码",
         icon: <GlobalOutlined />,
       },
+      {
+        key: "content-type-table",
+        label: "HTTP Content-Type",
+        icon: <GlobalOutlined />,
+      },
     ],
   },
 ];
