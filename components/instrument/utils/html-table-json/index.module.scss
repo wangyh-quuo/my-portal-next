@@ -1,0 +1,28 @@
+.table {
+  max-height: 500px;
+  overflow: auto;
+  border-inline-start: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
+  table {
+    table-layout: auto;
+    width: 100%;
+    text-align: start;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  tr {
+    box-sizing: border-box;
+  }
+  tr > th {
+    position: sticky;
+    top: 0;
+    background: #fafafa;
+  }
+  tr > th,
+  tr > td {
+    border-inline-end: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 16px;
+    text-align: center;
+  }
+}

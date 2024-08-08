@@ -24,7 +24,7 @@ const nextConfig = {
     if (!isServer) {
       config.plugins.push(
         new MonacoWebpackPlugin({
-          languages: ["typescript", "javascript", "css", "json"],
+          languages: ["typescript", "javascript", "css", "json", "html"],
           filename: "static/[name].worker.js",
         })
       );

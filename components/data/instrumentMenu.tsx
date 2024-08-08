@@ -9,6 +9,7 @@ import {
   QrcodeOutlined,
   RetweetOutlined,
   SecurityScanOutlined,
+  TableOutlined,
 } from "@ant-design/icons";
 
 /**
@@ -102,7 +103,18 @@ const instrumentMenus = [
         label: "加密/解密文本",
         icon: <SecurityScanOutlined />,
       },
-    ]
-  }
+    ],
+  },
+  {
+    key: "web",
+    label: "web",
+    children: [
+      {
+        key: "html-table-json",
+        label: "提取html表格中的数据",
+        icon: <TableOutlined />,
+      },
+    ],
+  },
 ];
 export default instrumentMenus;
