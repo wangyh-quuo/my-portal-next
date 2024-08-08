@@ -99,3 +99,73 @@ export function str2ab(str: string) {
   }
   return buf;
 }
+
+export function convertToBase(value: string, fromBase: number, toBase: number) {
+  // 定义
+  const digits =
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/".split(
+      ""
+    );
+  const fromDigits = digits.slice(0, fromBase);
+  const toDigits = digits.slice(0, toBase);
+  // 匹配数字
+  const validStr = fromDigits
+    .map((item) => (item === "+" || item === "/" ? `\\${item}` : item))
+    .join("");
+  const reg = new RegExp(`^(\\-)?([${validStr}]+)?(\\.)?([${validStr}]+)?$`);
+  const [_, $1, $2, $3, $4] = value.match(reg) ?? [];
+  // 校验通过的数字
+  if (
+    $2 !== void 0 &&
+    (($3 !== void 0 && $4 !== void 0) || ($3 === void 0 && $4 === void 0))
+  ) {
+    // 整数部分 $2
+    let d = $2
+      .split("")
+      .reverse()
+      .reduce((prev, cur, index) => {
+        return (
+          prev +
+          BigInt(fromDigits.indexOf(cur)) * BigInt(fromBase) ** BigInt(index)
+        );
+      }, 0n);
+
+    // 小数部分 $4
+    let decimalValue = "";
+    if ($3 !== void 0 && $4 !== void 0) {
+      let decimal = $4.split("").reduce((prev, cur, index) => {
+        return prev + fromDigits.indexOf(cur) * Math.pow(fromBase, -index - 1);
+      }, 0);
+
+      // 0.9999999999999999999 精度超过需要进1
+      if (Number.isInteger(decimal)) {
+        d = d + BigInt(decimal);
+      } else {
+        while (decimal > 0) {
+          decimalValue += toDigits[Math.floor(decimal * toBase)];
+          decimal = decimal * toBase - Math.floor(decimal * toBase);
+        }
+      }
+    }
+
+    // 整数部分 $2
+    let dValue = "";
+    while (d > 0) {
+      dValue = toDigits[Number(BigInt(d) % BigInt(toBase))] + dValue;
+      d = (BigInt(d) - (BigInt(d) % BigInt(toBase))) / BigInt(toBase);
+    }
+
+    if (decimalValue) {
+      return `${$1 ?? ""}${dValue || 0}.${decimalValue || 0}`;
+    }
+
+    return `${$1 ?? ""}${dValue || 0}`;
+  }
+
+  if (value.length) {
+    throw new Error(
+      `无效的base ${fromBase}数字 "${value}" , 请检查输入的数字或者进制`
+    );
+  }
+  return "";
+}
