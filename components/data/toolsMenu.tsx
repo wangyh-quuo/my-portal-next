@@ -16,7 +16,7 @@ import {
 /**
  * 工具菜单
  */
-const instrumentMenus = [
+const toolsMenus = [
   {
     key: "converter",
     label: "转化器",
@@ -128,4 +128,4 @@ const instrumentMenus = [
     ],
   },
 ];
-export default instrumentMenus;
+export default toolsMenus;

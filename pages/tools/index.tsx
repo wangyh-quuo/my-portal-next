@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavMenu from "@/components/NavMenu";
-import Instrument from "@/components/instrument";
-import instrumentMenus from "@/components/data/instrumentMenu";
+import Tools from "@/components/tools";
+import toolsMenus from "@/components/data/toolsMenu";
 import Head from "next/head";
 
 const Page: React.FC<any> = () => {
@@ -11,7 +11,7 @@ const Page: React.FC<any> = () => {
     setComponent(info.key);
   };
 
-  const defaultComponentName = instrumentMenus[0].children[0].key;
+  const defaultComponentName = toolsMenus[0].children[0].key;
 
   useEffect(() => {
     if (!componentName) {
@@ -35,11 +35,11 @@ const Page: React.FC<any> = () => {
         />
       </Head>
       <NavMenu
-        items={instrumentMenus}
+        items={toolsMenus}
         onSelect={onSelect}
         defaultSelectKeys={[defaultComponentName]}
       ></NavMenu>
-      <Instrument componentName={componentName} />
+      <Tools componentName={componentName} />
     </div>
   );
 };

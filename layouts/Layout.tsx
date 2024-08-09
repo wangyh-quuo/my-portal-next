@@ -34,9 +34,9 @@ const Layout: React.FC<LayoutProps> = (props) => {
       link: "/",
     },
     {
-      key: "instrument",
+      key: "tools",
       label: "IT工具",
-      link: "/instrument",
+      link: "/tools",
     },
   ];
 

@@ -2,15 +2,15 @@ import React, { lazy, Suspense } from "react";
 
 import { Empty, Spin } from "antd";
 
-interface InstrumentProps {
+interface ToolsProps {
   componentName: string;
 }
 
-const Instrument: React.FC<InstrumentProps> = (props) => {
+const Tools: React.FC<ToolsProps> = (props) => {
   const { componentName } = props;
 
   const Comp = lazy(() =>
-    import(`./utils/${componentName}/index.tsx`).catch((reason) => {
+    import(`./${componentName}/index.tsx`).catch((reason) => {
       return {
         default: () => (
           <Empty
@@ -38,4 +38,4 @@ const Instrument: React.FC<InstrumentProps> = (props) => {
   );
 };
 
-export default Instrument;
+export default Tools;
