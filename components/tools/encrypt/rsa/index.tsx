@@ -150,7 +150,7 @@ const RSA = () => {
           variant="filled"
           layout="vertical"
           labelAlign="right"
-          className="sm:grid sm:grid-cols-2 sm:gap-x-6"
+          className="grid grid-cols-2 gap-x-6"
         >
           <Form.Item name="modulusLength" label="密钥长度">
             <Select
@@ -196,10 +196,10 @@ const RSA = () => {
             ></Select>
           </Form.Item>
 
-          <Form.Item name="publicKey" label="公钥">
+          <Form.Item name="publicKey" label="公钥" className="col-span-2 sm:col-span-1">
             <Input.TextArea placeholder="公钥" style={{ minHeight: 240 }} />
           </Form.Item>
-          <Form.Item name="privateKey" label="私钥">
+          <Form.Item name="privateKey" label="私钥" className="col-span-2 sm:col-span-1">
             <Input.TextArea placeholder="私钥" style={{ minHeight: 240 }} />
           </Form.Item>
 
