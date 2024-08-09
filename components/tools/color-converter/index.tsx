@@ -1,8 +1,7 @@
 import React, { ChangeEventHandler, useEffect } from "react";
 import { Card, ColorPicker, Form, Input } from "antd";
 import UtilsLayout from "../Layout";
-import CopyButton from "@/components/CopyButton";
-import { CopyOutlined } from "@ant-design/icons";
+import { InputCopy } from "@/components/CopyButton";
 import { getColorInfo } from "@/utils/color";
 import { Color } from "antd/es/color-picker";
 
@@ -98,14 +97,9 @@ const ColorConverter = () => {
               onChange={onHexChange}
               placeholder="例:#ffffff"
               suffix={
-                <CopyButton
+                <InputCopy
                   options={{
                     text: () => form.getFieldValue("hex"),
-                  }}
-                  buttonProps={{
-                    size: "small",
-                    icon: <CopyOutlined />,
-                    disabled: false,
                   }}
                 />
               }
@@ -127,14 +121,9 @@ const ColorConverter = () => {
               placeholder="例:rgb(255,255,255)"
               onChange={onRgbaChange}
               suffix={
-                <CopyButton
+                <InputCopy
                   options={{
                     text: () => form.getFieldValue("rgb"),
-                  }}
-                  buttonProps={{
-                    size: "small",
-                    icon: <CopyOutlined />,
-                    disabled: false,
                   }}
                 />
               }
@@ -156,14 +145,9 @@ const ColorConverter = () => {
               placeholder="例:hsl(0,0%,100%)"
               onChange={onHslaChange}
               suffix={
-                <CopyButton
+                <InputCopy
                   options={{
                     text: () => form.getFieldValue("hsl"),
-                  }}
-                  buttonProps={{
-                    size: "small",
-                    icon: <CopyOutlined />,
-                    disabled: false,
                   }}
                 />
               }

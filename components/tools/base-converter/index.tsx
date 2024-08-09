@@ -2,18 +2,7 @@ import { Alert, Card, Divider, Form, Input, InputNumber, message } from "antd";
 import React, { useEffect, useState } from "react";
 import UtilsLayout from "../Layout";
 import { convertToBase } from "@/utils/converter";
-import CopyButton from "@/components/CopyButton";
-import { CopyOutlined } from "@ant-design/icons";
-
-const InputCopy = ({ value }: { value: string }) => (
-  <CopyButton
-    value={value}
-    buttonProps={{
-      size: "small",
-      icon: <CopyOutlined />,
-    }}
-  />
-);
+import { InputCopy } from "@/components/CopyButton";
 
 const BaseConverter = () => {
   const [form] = Form.useForm<{ text: string; fromBase: number }>();
