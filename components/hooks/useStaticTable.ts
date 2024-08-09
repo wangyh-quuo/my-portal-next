@@ -29,6 +29,7 @@ const useStaticTable = <T extends Record<string, any>>(
     bordered: true,
     pagination: false,
     tableLayout: "auto",
+    scroll: { x: '100%'},
     ...(defaultProps ?? {}),
   });
 
