@@ -1,5 +1,6 @@
 import {
   BgColorsOutlined,
+  CodeOutlined,
   DiffOutlined,
   FieldNumberOutlined,
   FieldStringOutlined,
@@ -130,6 +131,11 @@ const toolsMenus = [
         key: "url-parser",
         label: "URL 解析",
         icon: <LinkOutlined />,
+      },
+      {
+        key: "url-encoder",
+        label: "URL 编码/解码",
+        icon: <CodeOutlined />,
       },
     ],
   },
