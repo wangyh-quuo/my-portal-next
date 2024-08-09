@@ -1,3 +1,5 @@
+import path from "node:path";
+import fs from "node:fs";
 import MonacoWebpackPlugin from "monaco-editor-webpack-plugin";
 import BundleAnalyzer from "@next/bundle-analyzer";
 const withBundleAnalyzer = BundleAnalyzer({
@@ -44,8 +46,16 @@ const nextConfig = {
   ],
 };
 
+let customDomain = "";
+try {
+  const file = fs.readFileSync(path.resolve("CNAME"));
+  customDomain = file.toString();
+} catch (error) {
+  customDomain = "";
+}
+
 // gitpage静态页面路径重定向
-if (process.env.GITHUB_ACTIONS) {
+if (process.env.GITHUB_ACTIONS && !customDomain) {
   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, "");
   nextConfig.basePath = `/${repo}`;
   nextConfig.redirects = async () => {
