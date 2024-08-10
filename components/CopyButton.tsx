@@ -52,8 +52,9 @@ export const InputCopy = (props: CopyButtonProps) => (
     }}
     value={props.value}
     options={props.options}
-    children={""}
-  />
+  >
+    {''}
+  </CopyButton>
 );
 
 export default CopyButton;
