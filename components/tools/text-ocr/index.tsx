@@ -82,8 +82,12 @@ const TextOcr: React.FC = () => {
       }
       if (status === "done") {
         setImageUrl(info.file.xhr.responseURL);
-        setFile(info.file.originFileObj);
-        recognize(info.file.originFileObj!);
+        const worker = new Worker(new URL("worker.ts", import.meta.url));
+        worker.postMessage(info.file.originFileObj);
+        worker.onmessage = function (e: MessageEvent<File>) {
+          setFile(e.data);
+          recognize(e.data);
+        };
       } else if (status === "error") {
         message.error(`${info.file.name} 解析失败`);
       }
