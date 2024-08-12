@@ -1,14 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import NavMenu from "@/components/NavMenu";
+import Tools from "@/components/tools";
 import toolsMenus from "@/components/data/toolsMenu";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
 const Page: React.FC<any> = () => {
+  const [componentName, setComponent] = useState<string>("");
   const router = useRouter();
-  const defaultComponentName = toolsMenus[0].children[0].key;
+  const component = router.query.component as string;
+
+  const defaultSelects = useMemo(
+    () => (component ? [component] : []),
+    [component]
+  );
+
+  const onSelect = (info: any) => {
+    setComponent(info.key);
+    router.push(`/tools/${info.key}`);
+  };
+
   useEffect(() => {
-    router.push(`/tools/${defaultComponentName}`);
-  }, []);
+    setComponent(component);
+  }, [component]);
+
   return (
     <div className="flex sm:flex-row flex-col">
       <Head>
@@ -24,6 +39,12 @@ const Page: React.FC<any> = () => {
           content="为开发人员提供的方便的在线工具集合，具有出色的用户体验。 在线工具 是一个免费开源的方便在线工具集合，供开发人员和 IT 工作人员使用"
         />
       </Head>
+      <NavMenu
+        items={toolsMenus}
+        onSelect={onSelect}
+        defaultSelectKeys={defaultSelects}
+      ></NavMenu>
+      {componentName && <Tools componentName={componentName} />}
     </div>
   );
 };

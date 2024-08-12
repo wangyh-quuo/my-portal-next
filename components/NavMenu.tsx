@@ -1,6 +1,6 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Menu, type MenuProps } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useWindowSize from "./hooks/useWindowSize";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -14,10 +14,15 @@ interface INavMenuProp {
 const NavMenu: React.FC<INavMenuProp> = (props) => {
   const [collapsed, setCollapsed] = useState(false);
 
-  const [selectedKeys, setSelectedKeys] = useState(
-    props.defaultSelectKeys ?? []
-  );
-  const findDefaultOpenKeys = () => {
+  const [selectedKeys, setSelectedKeys] = useState<string[]>();
+
+  const [stateOpenKeys, setStateOpenKeys] = useState<string[]>([]);
+
+  const onOpenChange: MenuProps["onOpenChange"] = (openKeys) => {
+    setStateOpenKeys(openKeys);
+  };
+
+  const findDefaultOpenKeys = (keys: string[]) => {
     const result: string[] = [];
 
     const find = (
@@ -37,11 +42,22 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
       });
     };
 
-    find(props.items, selectedKeys[0], [], result);
+    find(props.items, keys[0], [], result);
     return result;
   };
 
-  const defaultOpenKeys = findDefaultOpenKeys();
+  useEffect(() => {
+    if (props.defaultSelectKeys && props.defaultSelectKeys.length) {
+      setSelectedKeys(props.defaultSelectKeys);
+
+      const keys = findDefaultOpenKeys(props.defaultSelectKeys);
+      setStateOpenKeys(
+        stateOpenKeys
+          .filter((key) => keys.find((item) => item !== key))
+          .concat(keys)
+      );
+    }
+  }, [props.defaultSelectKeys]);
 
   const onSelect = (info: any) => {
     setSelectedKeys(info.selectedKeys);
@@ -65,8 +81,8 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
       <div className="hidden sm:inline-flex flex-col sticky top-14 -bottom-14 h-[calc(100vh-4rem)] z-[10]">
         <Menu
           mode="inline"
-          defaultSelectedKeys={props.defaultSelectKeys}
-          defaultOpenKeys={defaultOpenKeys}
+          openKeys={stateOpenKeys}
+          onOpenChange={onOpenChange}
           selectedKeys={selectedKeys}
           className="overflow-y-auto !border-e-0 bg-transparent"
           inlineCollapsed={collapsed}
@@ -85,7 +101,6 @@ const NavMenu: React.FC<INavMenuProp> = (props) => {
       {/* mobile menu*/}
       <Menu
         mode="horizontal"
-        defaultSelectedKeys={props.defaultSelectKeys}
         selectedKeys={selectedKeys}
         className="sm:hidden"
         items={props.items}
