@@ -149,6 +149,11 @@ const toolsMenus = [
         label: "URL 编码/解码",
         icon: <CodeOutlined />,
       },
+      {
+        key: "clip-path-generator",
+        label: "CSS clip-path 生成器",
+        icon: <CodeOutlined />,
+      },
     ],
   },
 ];
