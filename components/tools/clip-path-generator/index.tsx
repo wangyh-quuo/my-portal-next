@@ -15,6 +15,7 @@ const ClipPathContainer: React.FC<IShape & { update: UpdateCallback }> = (
 ) => {
   const isDragging = useRef(false);
   const dragIndex = useRef<number>(-1);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMouseDown = (e: React.MouseEvent, index: number) => {
     console.log("move", e);
@@ -30,9 +31,7 @@ const ClipPathContainer: React.FC<IShape & { update: UpdateCallback }> = (
 
     if (!ticking) {
       requestAnimationFrame(() => {
-        const rect = (
-          e.target as HTMLDivElement
-        ).parentElement?.getBoundingClientRect();
+        const rect = containerRef.current?.getBoundingClientRect();
         if (!rect) return;
         const x = (((e.clientX - rect.left) / rect.width) * 100).toFixed(0);
         const y = (((e.clientY - rect.top) / rect.height) * 100).toFixed(0);
@@ -63,7 +62,7 @@ const ClipPathContainer: React.FC<IShape & { update: UpdateCallback }> = (
               className="w-full h-full bg-blue-500"
               style={{ clipPath: props.value }}
             ></div>
-            <div className="absolute top-0 bottom-0 left-0 right-0">
+            <div ref={containerRef} className="absolute top-0 bottom-0 left-0 right-0">
               {props.points.map((point, index) => (
                 <div
                   key={index}
