@@ -77,6 +77,13 @@ const linkItems: INavItems[] = [
         icon: "/static/favicon.png",
         link: "https://transform.tools",
       },
+      {
+        key: "agent-qa",
+        label: "agent-qa",
+        description: "网页、Android 与 iOS 自然语言测试；memidex 持久记忆、经验证的自我改进与 MCP 集成，保留可复查运行证据。模型等服务费用依配置与用量产生。",
+        icon: "/icon.png",
+        link: "https://vostride.com",
+      },
     ],
     level: 1,
   },
